@@ -1,0 +1,43 @@
+stages:
+  - install_python
+  - test_python
+  - test_java
+  - deploy
+
+install_python:
+  stage: install_python
+  image: python:3.10
+  script:
+    - python3 -m venv $VIRTUAL_ENV
+    - source $VIRTUAL_ENV/bin/activate
+    - python -m pip install --upgrade pip
+    - pip install -r ml/requirements.txt
+    - pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.0/en_core_sci_md-0.5.0.tar.gz
+  artifacts:
+    paths:
+      - .venv/
+
+variables:
+  VIRTUAL_ENV: ".venv"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip_cache"
+  MAVEN_CACHE_DIR: "$CI_PROJECT_DIR/.maven_cache"
+
+
+test_python:
+  stage: test_python
+  image: python:3.10
+  script:
+    - source $VIRTUAL_ENV/bin/activate
+    - export PYTHONPATH=$PYTHONPATH:$CI_PROJECT_DIR/ml
+    - pytest
+  coverage: '/^TOTAL\s+\d+\s+\d+\s+(\d+\%)$/'
+
+# TODO: add path to pom.xml
+#test_java:
+#  stage: test_java
+#  image: maven:3.8.7-eclipse-temurin-11
+#  script:
+#    - mvn clean test
+#  cache:
+#    paths:
+#      - .maven_cache/

@@ -1,0 +1,51 @@
+.doctor-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.doctor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.documents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.doc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.email-container {
+  width: 50%;
+  margin-left: 15px;
+}
+
+.accept-decline {
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.own-btn {
+  border-radius: 25px;
+  width: 80px;
+}

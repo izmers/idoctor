@@ -1,0 +1,30 @@
+# Python virtual environments
+myenv/
+venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node modules (React Native/Frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files
+dist/
+build/
+
+# Java/Spring Boot
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# macOS files
+.DS_Store
+
+# Environment variables
+*.env
